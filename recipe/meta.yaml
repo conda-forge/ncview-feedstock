@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win or osx]
+  skip: True  # [win]
 
 requirements:
   build:
@@ -23,14 +23,14 @@ requirements:
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw
+    - xorg-libxaw  # [linux]
     - zlib
   run:
     - hdf5
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw
+    - xorg-libxaw  # [linux]
     - zlib
 
 test:
