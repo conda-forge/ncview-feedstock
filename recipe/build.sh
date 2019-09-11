@@ -9,6 +9,6 @@
             --with-png_incdir=${PREFIX}/include \
             --with-png_libdir=${PREFIX}/lib
 
-make
+make -j$CPU_COUNT
 make check
 make install
