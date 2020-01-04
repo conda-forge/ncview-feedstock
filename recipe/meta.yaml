@@ -24,14 +24,14 @@ requirements:
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw # [not osx]
+    - xorg-libxaw  # [not osx]
     - zlib
   run:
     - hdf5
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw # [not osx]
+    - xorg-libxaw  # [not osx]
     - zlib
 
 test:
