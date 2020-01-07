@@ -1,0 +1,20 @@
+--- ncview-2.1.7/configure	2016-03-21 16:52:34.000000000 +0000
++++ ncview-2.1.7-working/configure	2020-01-04 21:49:07.000000000 +0000
+@@ -5504,7 +5504,7 @@
+ 	echo "** Could not find the png.h file, so -frames support will not be included  **"
+ 	echo "** Install the PNG library (and development headers) to fix this           **"
+ fi
+-PNG_LIBNAME=libpng.so
++PNG_LIBNAME=libpng.dylib
+ 
+ # Check whether --with-png_libdir was given.
+ if test "${with_png_libdir+set}" = set; then :
+@@ -5698,7 +5698,7 @@
+ fi
+ 
+ fi
+-PNG_LIBNAME=`echo $PNG_LIBNAME | sed s/lib// | sed s/\.so//`
++PNG_LIBNAME=`echo $PNG_LIBNAME | sed s/lib// | sed s/\.dylib//`
+ PNG_PRESENT=no
+ if test $PNG_INC_PRESENT = yes; then
+ 	if test x$PNG_LIBDIR != x; then

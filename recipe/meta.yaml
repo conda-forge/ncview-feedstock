@@ -1,19 +1,19 @@
-{% set name = "ncview" %}
 {% set version = "2.1.7" %}
 
 package:
-  name: {{ name|lower }}
+  name: ncview
   version: {{ version }}
 
 source:
-  url: ftp://cirrus.ucsd.edu/pub/ncview/{{ name }}-{{ version }}.tar.gz
+  url: ftp://cirrus.ucsd.edu/pub/ncview/ncview-{{ version }}.tar.gz
   sha256: a14c2dddac0fc78dad9e4e7e35e2119562589738f4ded55ff6e0eca04d682c82
   patches:
+    - 0000-change_pnglib_suffix.patch  # [osx]
     - 0001-remove-same-compiler-test.patch
 
 build:
-  number: 2
-  skip: True  # [win or osx]
+  number: 3
+  skip: True  # [win]
 
 requirements:
   build:
@@ -23,14 +23,14 @@ requirements:
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw
+    - xorg-libxaw  # [not osx]
     - zlib
   run:
     - hdf5
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw
+    - xorg-libxaw  # [not osx]
     - zlib
 
 test:
