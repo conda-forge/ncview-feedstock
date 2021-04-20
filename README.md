@@ -3,7 +3,7 @@ About ncview
 
 Home: http://meteora.ucsd.edu/~pierce/ncview_home_page.html
 
-Package license: GPL-3.0
+Package license: GPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ncview-feedstock/blob/master/LICENSE.txt)
 
