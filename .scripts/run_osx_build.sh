@@ -36,6 +36,9 @@ if [[ "${CI:-}" != "" ]]; then
   mangle_compiler ./ ./recipe .ci_support/${CONFIG}.yaml
 fi
 
+echo -e "\n\nInstalling XQuartz using homebrew."
+brew install --cask xquartz
+
 if [[ "${CI:-}" != "" ]]; then
   echo -e "\n\nMangling homebrew in the CI to avoid conflicts."
   /usr/bin/sudo mangle_homebrew
