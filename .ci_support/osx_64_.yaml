@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,17 +11,17 @@ channel_targets:
 hdf5:
 - 1.10.6
 libnetcdf:
-- 4.7.4
+- 4.8.0
 libpng:
 - '1.6'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 pin_run_as_build:
   libpng:
     max_pin: x.x
   zlib:
     max_pin: x.x
+target_platform:
+- osx-64
 zlib:
 - '1.2'
