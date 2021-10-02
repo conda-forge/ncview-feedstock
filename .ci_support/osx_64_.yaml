@@ -5,11 +5,11 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 hdf5:
-- 1.10.6
+- 1.12.1
 libnetcdf:
 - 4.8.1
 libpng:
