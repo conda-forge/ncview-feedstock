@@ -9,15 +9,17 @@ MINIFORGE_HOME=${MINIFORGE_HOME:-${HOME}/miniforge3}
 ( startgroup "Installing a fresh version of Miniforge" ) 2> /dev/null
 
 MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download"
-MINIFORGE_FILE="Miniforge3-MacOSX-x86_64.sh"
+MINIFORGE_FILE="Miniforge3-MacOSX-$(uname -m).sh"
 curl -L -O "${MINIFORGE_URL}/${MINIFORGE_FILE}"
+rm -rf ${MINIFORGE_HOME}
 bash $MINIFORGE_FILE -b -p ${MINIFORGE_HOME}
 
 ( endgroup "Installing a fresh version of Miniforge" ) 2> /dev/null
 
 ( startgroup "Configuring conda" ) 2> /dev/null
 
-BUILD_CMD=build
+GET_BOA=boa
+BUILD_CMD=mambabuild
 
 source ${MINIFORGE_HOME}/etc/profile.d/conda.sh
 conda activate base
@@ -33,9 +35,6 @@ setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
 if [[ "${CI:-}" != "" ]]; then
   mangle_compiler ./ ./recipe .ci_support/${CONFIG}.yaml
 fi
-
-echo -e "\n\nInstalling XQuartz using homebrew."
-brew install --cask xquartz
 
 if [[ "${CI:-}" != "" ]]; then
   echo -e "\n\nMangling homebrew in the CI to avoid conflicts."
@@ -65,7 +64,7 @@ validate_recipe_outputs "${FEEDSTOCK_NAME}"
 
 ( startgroup "Uploading packages" ) 2> /dev/null
 
-if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
+if [[ "${UPLOAD_PACKAGES}" != "False" ]] && [[ "${IS_PR_BUILD}" == "False" ]]; then
   upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}" ./ ./recipe ./.ci_support/${CONFIG}.yaml
 fi
 
