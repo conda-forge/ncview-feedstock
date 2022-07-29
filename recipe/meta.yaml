@@ -18,6 +18,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - make
   host:
     - hdf5
     - libnetcdf
