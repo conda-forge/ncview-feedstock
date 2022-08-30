@@ -12,12 +12,13 @@ source:
     - 0001-remove-same-compiler-test.patch
 
 build:
-  number: 3
+  number: 4
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - make
   host:
     - hdf5
     - libnetcdf
