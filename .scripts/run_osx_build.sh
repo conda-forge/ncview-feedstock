@@ -23,11 +23,10 @@ bash $MINIFORGE_FILE -b -p ${MINIFORGE_HOME}
 source ${MINIFORGE_HOME}/etc/profile.d/conda.sh
 conda activate base
 
-echo -e "\n\nInstalling ['conda-forge-ci-setup=3'] and conda-build."
 mamba install --update-specs --quiet --yes --channel conda-forge \
-    conda-build pip boa conda-forge-ci-setup=3
+    conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12"
 mamba update --update-specs --yes --quiet --channel conda-forge \
-    conda-build pip boa conda-forge-ci-setup=3
+    conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12"
 
 
 
@@ -37,9 +36,6 @@ setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
 if [[ "${CI:-}" != "" ]]; then
   mangle_compiler ./ ./recipe .ci_support/${CONFIG}.yaml
 fi
-
-echo -e "\n\nInstalling XQuartz using homebrew."
-brew install --cask xquartz
 
 if [[ "${CI:-}" != "" ]]; then
   echo -e "\n\nMangling homebrew in the CI to avoid conflicts."
