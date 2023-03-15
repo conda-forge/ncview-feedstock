@@ -3,6 +3,9 @@
 if [[ $(uname -s) == Darwin ]]
 then
     X_PREFIX=/usr/X11
+    # install xquartz
+    sudo mv /usr/local/conda_mangled/* /usr/local/
+    /usr/local/Homebrew/bin/brew install --cask xquartz
 else
     X_PREFIX=$PREFIX
 fi
