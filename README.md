@@ -1,11 +1,11 @@
-About ncview
-============
+About ncview-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ncview-feedstock/blob/main/LICENSE.txt)
 
 Home: http://meteora.ucsd.edu/~pierce/ncview_home_page.html
 
 Package license: GPL-3.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ncview-feedstock/blob/main/LICENSE.txt)
 
 Summary: Visual browser for netCDF format files
 
