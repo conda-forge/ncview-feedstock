@@ -22,5 +22,7 @@ export ac_cv_lib_expat_XML_GetBase=yes
             --with-png_libdir=${PREFIX}/lib
 
 make
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 make check
+fi
 make install
