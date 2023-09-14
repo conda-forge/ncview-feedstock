@@ -30,6 +30,12 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     as_ac_File=`printf "%s\n" "ac_cv_file_$UDUNITS2_LIBDIR/$UDUNITS2_LIBNAME" | $as_tr_sh`
     eval "export $as_ac_File=yes"
 
+    PNG_INCDIR=${PREFIX}/include
+    PNG_LIBDIR=${PREFIX}/lib
+    PNG_LIBNAME=libpng.dylib
+    as_ac_File=`printf "%s\n" "ac_cv_file_$PNG_LIBDIR/$PNG_LIBNAME" | $as_tr_sh`
+    eval "export $as_ac_File=yes"
+
     # # General UDUNITS2 check
     # export UDUNITS2_PATH=${PREFIX}
 
