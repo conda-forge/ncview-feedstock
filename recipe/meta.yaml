@@ -41,7 +41,7 @@ test:
   commands:
     - test -f $PREFIX/bin/ncview
     - test -x $PREFIX/bin/ncview
-    - ncview -h
+    - "ncview -c 2>&1 |egrep \"Error: Can't open display:\""
 
 about:
   home: http://meteora.ucsd.edu/~pierce/ncview_home_page.html
