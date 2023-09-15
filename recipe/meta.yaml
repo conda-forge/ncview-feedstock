@@ -31,7 +31,7 @@ requirements:
   run:
     # This is needed due to a combination of overdepending in udunits2
     # and missing improvements of the ncview build system.
-    - libexpat
+    - libexpat  # [linux]
     # The udunits2 package is lacking run_exports at the moment.
     # Remove the following line pending
     # https://github.com/conda-forge/udunits2-feedstock/issues/46
