@@ -35,6 +35,7 @@ requirements:
     # Remove the following line pending
     # https://github.com/conda-forge/udunits2-feedstock/issues/46
     - udunits2
+    - xorg-libxaw  # [not osx]
 
 test:
   commands:
