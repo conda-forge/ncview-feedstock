@@ -41,6 +41,9 @@ test:
   commands:
     - test -f $PREFIX/bin/ncview
     - test -x $PREFIX/bin/ncview
+    # ncview always tries to open the display, even for pure text
+    # output like -h and -c, but if we reach the point where we
+    # get the error message, at least linking has worked.
     - "ncview -c 2>&1 |egrep \"Error: Can't open display:\""
 
 about:
