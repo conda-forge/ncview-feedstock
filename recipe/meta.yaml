@@ -20,7 +20,6 @@ requirements:
     - {{ compiler('c') }}
     - make
   host:
-    - hdf5
     - libnetcdf
     - libpng
     - udunits2
@@ -29,7 +28,6 @@ requirements:
     - xorg-libxaw  # [not osx]
     - xorg-libxt  # [not osx]
     - xorg-libx11  # [not osx]
-    - zlib
   run:
     # The udunits2 package is lacking run_exports at the moment.
     # Remove the following line pending
