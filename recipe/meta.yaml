@@ -31,6 +31,7 @@ test:
   commands:
     - test -f $PREFIX/bin/ncview
     - test -x $PREFIX/bin/ncview
+    - ncview -h
 
 about:
   home: http://meteora.ucsd.edu/~pierce/ncview_home_page.html
