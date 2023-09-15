@@ -24,7 +24,11 @@ requirements:
     - libnetcdf
     - libpng
     - udunits2
+    - xorg-libsm  # [not osx]
+    - xorg-libice  # [not osx]
     - xorg-libxaw  # [not osx]
+    - xorg-libxt  # [not osx]
+    - xorg-libx11  # [not osx]
     - zlib
   run:
     # The udunits2 package is lacking run_exports at the moment.
