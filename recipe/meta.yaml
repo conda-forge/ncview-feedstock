@@ -12,7 +12,7 @@ source:
     - 0001-remove-same-compiler-test.patch
 
 build:
-  number: 9
+  number: 10
   skip: True  # [win]
 
 requirements:
@@ -20,24 +20,32 @@ requirements:
     - {{ compiler('c') }}
     - make
   host:
-    - hdf5
     - libnetcdf
     - libpng
     - udunits2
-    - xorg-libxaw  # [not osx]
-    - zlib
+    - xorg-libsm  # [not osx]
+    - xorg-libice  # [not osx]
+    - xorg-libxaw
+    - xorg-libxt
+    - xorg-libx11
   run:
-    - hdf5
-    - libnetcdf
-    - libpng
+    # This is needed due to a combination of overdepending in udunits2
+    # and missing improvements of the ncview build system.
+    - libexpat  # [linux]
+    # The udunits2 package is lacking run_exports at the moment.
+    # Remove the following line pending
+    # https://github.com/conda-forge/udunits2-feedstock/issues/46
     - udunits2
-    - xorg-libxaw  # [not osx]
-    - zlib
+    - xorg-libxaw
 
 test:
   commands:
     - test -f $PREFIX/bin/ncview
     - test -x $PREFIX/bin/ncview
+    # ncview always tries to open the display, even for pure text
+    # output like -h and -c, but if we reach the point where we
+    # get the error message, at least linking has worked.
+    - "ncview -c 2>&1 |egrep \"Error: Can't open display:\""
 
 about:
   home: http://meteora.ucsd.edu/~pierce/ncview_home_page.html
