@@ -10,6 +10,7 @@ source:
   patches:
     - 0000-change_pnglib_suffix.patch  # [osx]
     - 0001-remove-same-compiler-test.patch
+    - remove-explicit-expat-linking.patch
 
 build:
   number: 10
