@@ -26,6 +26,8 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     # Now follow cache variables for dep checks
     UDUNITS2_INCDIR=${PREFIX}/include
     UDUNITS2_LIBDIR=${PREFIX}/lib
+    # Note that we need .a here to appease the configure script,
+    # we nonetheless link agains the shared library.
     UDUNITS2_LIBNAME=libudunits2.a
     as_ac_File=`printf "%s\n" "ac_cv_file_$UDUNITS2_LIBDIR/$UDUNITS2_LIBNAME" | $as_tr_sh`
     eval "export $as_ac_File=yes"
@@ -35,22 +37,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     PNG_LIBNAME=libpng.dylib
     as_ac_File=`printf "%s\n" "ac_cv_file_$PNG_LIBDIR/$PNG_LIBNAME" | $as_tr_sh`
     eval "export $as_ac_File=yes"
-
-    # # General UDUNITS2 check
-    # export UDUNITS2_PATH=${PREFIX}
-
-    # # UDUNITS2 database check
-    # nco_udunits2_xml=${UDUNITS2_PATH}/share/udunits/udunits2.xml
-    # as_ac_File=`printf "%s\n" "ac_cv_file_$nco_udunits2_xml" | $as_tr_sh`
-    # eval "export $as_ac_File=yes"
-    # # UDUNITS2 header check
-    # as_ac_File=`printf "%s\n" "ac_cv_file_${UDUNITS2_PATH}/include/udunits2.h" | $as_tr_sh`
-    # eval "export $as_ac_File=yes"
-
-    # # Hardcode flex output root
-    # export ac_cv_prog_lex_root=lex.yy
-
-    # export LEX=${BUILD_PREFIX}/bin/flex
 fi
 
 export ac_cv_lib_expat_XML_GetBase=yes
