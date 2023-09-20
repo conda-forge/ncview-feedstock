@@ -10,6 +10,8 @@ else
     X_PREFIX=$PREFIX
 fi
 
+export ac_cv_lib_expat_XML_GetBase=yes
+
 ./configure --prefix=${PREFIX} \
             --x-libraries=${X_PREFIX}/lib \
             --x-includes=${X_PREFIX}/include \

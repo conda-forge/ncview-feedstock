@@ -10,9 +10,10 @@ source:
   patches:
     - 0000-change_pnglib_suffix.patch  # [osx]
     - 0001-remove-same-compiler-test.patch
+    - remove-explicit-expat-linking.patch
 
 build:
-  number: 10
+  number: 11
   skip: True  # [win]
 
 requirements:
@@ -29,13 +30,6 @@ requirements:
     - xorg-libxt
     - xorg-libx11
   run:
-    # This is needed due to a combination of overdepending in udunits2
-    # and missing improvements of the ncview build system.
-    - libexpat  # [linux]
-    # The udunits2 package is lacking run_exports at the moment.
-    # Remove the following line pending
-    # https://github.com/conda-forge/udunits2-feedstock/issues/46
-    - udunits2
     - xorg-libxaw
 
 test:

@@ -1,0 +1,14 @@
+diff -ruN -x __pycache__ -x obj -x '*~' -x tags -x TAGS -x autom4te.cache -x '*.orig' ncview-2.1.8.orig/configure ncview-2.1.8/configure
+--- ncview-2.1.8.orig/configure	2023-09-20 09:43:50.821241036 +0200
++++ ncview-2.1.8/configure	2023-09-20 09:47:01.591013012 +0200
+@@ -5411,7 +5411,9 @@
+ #define HAVE_LIBEXPAT 1
+ _ACEOF
+ 
+-  LIBS="-lexpat $LIBS"
++  # Remove the exlicit addition of expat libraries to linking flags.
++  # It is only needed by udunits2 and should not be added here---udunits2 knows how to find it.
++  #  LIBS="-lexpat $LIBS"
+ 
+ else
+   haveExpat=no
