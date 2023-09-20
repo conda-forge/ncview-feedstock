@@ -30,10 +30,6 @@ requirements:
     - xorg-libxt
     - xorg-libx11
   run:
-    # The udunits2 package is lacking run_exports at the moment.
-    # Remove the following line pending
-    # https://github.com/conda-forge/udunits2-feedstock/issues/46
-    - udunits2
     - xorg-libxaw
 
 test:
