@@ -13,12 +13,13 @@ source:
     - remove-explicit-expat-linking.patch
 
 build:
-  number: 11
+  number: 12
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make
   host:
     - libnetcdf
