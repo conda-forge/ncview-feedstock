@@ -13,13 +13,15 @@ source:
     - remove-explicit-expat-linking.patch
 
 build:
-  number: 11
+  number: 12
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - make
+    - pkg-config
   host:
     - libnetcdf
     - libpng
@@ -28,6 +30,8 @@ requirements:
     - xorg-libice  # [not osx]
     - xorg-libxaw
     - xorg-libxt
+    - xorg-libxmu
+    - xorg-xorgproto
     - xorg-libx11
   run:
     - xorg-libxaw
