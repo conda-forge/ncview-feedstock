@@ -33,7 +33,6 @@ requirements:
     - xorg-libx11
   run:
     - xorg-libxaw
-    - xorg-libxmu
 
 test:
   commands:
