@@ -21,6 +21,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - make
+    - pkg-config
   host:
     - libnetcdf
     - libpng
