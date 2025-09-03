@@ -29,9 +29,11 @@ requirements:
     - xorg-libice  # [not osx]
     - xorg-libxaw
     - xorg-libxt
+    - xorg-libxmu
     - xorg-libx11
   run:
     - xorg-libxaw
+    - xorg-libxmu
 
 test:
   commands:
