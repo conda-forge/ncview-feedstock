@@ -13,7 +13,7 @@ source:
     - remove-explicit-expat-linking.patch
 
 build:
-  number: 12
+  number: 13
   skip: True  # [win]
 
 requirements:
