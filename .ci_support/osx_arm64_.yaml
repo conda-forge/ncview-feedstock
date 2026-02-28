@@ -15,7 +15,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 libnetcdf:
-- 4.9.3
+- 4.10.0
 libpng:
 - '1.6'
 macos_machine:
