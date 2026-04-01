@@ -6,6 +6,9 @@ then
     # install xquartz
     sudo mv /usr/local/conda_mangled/* /usr/local/
     /usr/local/Homebrew/bin/brew install --cask xquartz
+    # ncview still contains K&R-era C that breaks under conda-forge's newer
+    # default C language mode on macOS, so compile it in a pre-C23 GNU mode.
+    export CFLAGS="${CFLAGS} -std=gnu17"
 else
     X_PREFIX=$PREFIX
 fi
