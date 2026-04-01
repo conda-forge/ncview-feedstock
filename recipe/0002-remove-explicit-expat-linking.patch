@@ -1,0 +1,45 @@
+diff --git a/configure b/configure
+--- a/configure
++++ b/configure
+@@ -5776,7 +5776,9 @@ if test "x$ac_cv_lib_expat_XML_GetBase" = xyes
+ then :
+   haveExpat=yes
+ 
+-  LIBS="-lexpat $LIBS"
++  # Expat is a transitive dependency of libudunits2 and should not be
++  # added to ncview's direct link flags here.
++  # LIBS="-lexpat $LIBS"
+ 
+ else $as_nop
+   haveExpat=no
+@@ -5785,8 +5787,8 @@ fi
+ 
+ 	EXPAT_LIBS=$LIBS
+ 	echo "Expat libraries (needed by udunits2): $EXPAT_LIBS"
+-	UDUNITS2_LDFLAGS="$UDUNITS2_LDFLAGS $LIBS"
+ 	LIBS=$LIBSsave
++	UDUNITS2_LDFLAGS="$UDUNITS2_LDFLAGS"
+ 	CFLAGS=$CFLAGSsave
+ fi
+ 
+diff --git a/m4macros/udunits2.m4 b/m4macros/udunits2.m4
+--- a/m4macros/udunits2.m4
++++ b/m4macros/udunits2.m4
+@@ -122,13 +122,15 @@ if test $UDUNITS2_PRESENT = yes; then
+ 	AC_MSG_CHECKING([for expat library (required by udunits2)])
+ 	AC_MSG_RESULT()
+ 	AC_CHECK_LIB(expat,XML_GetBase,[],[haveExpat=no])
+-	if test x"$haveExpat"x != "xyesx"; then
++        if test x"$haveExpat"x != "xyesx"; then
+ 	  AC_MSG_ERROR([Could not find the expat library despite the fact that the udunits2 library is installed.  This probably means some sort of configuration file error. Please consult with the package maintainer.])
+ 	  exit -1
+ 	fi
+ 	EXPAT_LIBS=$LIBS
+ 	echo "Expat libraries (needed by udunits2): $EXPAT_LIBS"
+-	UDUNITS2_LDFLAGS="$UDUNITS2_LDFLAGS $LIBS"
++	dnl Keep ncview linked only against libudunits2. libexpat remains a
++	dnl transitive dependency and is picked up through libudunits2.
++	UDUNITS2_LDFLAGS="$UDUNITS2_LDFLAGS"
+ 	LIBS=$LIBSsave
+ 	CFLAGS=$CFLAGSsave
+ fi
