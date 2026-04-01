@@ -14,9 +14,10 @@ source:
   sha256: 597cfddf9c2d7993e9b0b86bca1b73839567ee9116ee33f6d750a449b5033d91
   patches:
     - if: osx
-      then: 0000-change_pnglib_suffix.patch
-    - 0001-remove-same-compiler-test.patch
-    - remove-explicit-expat-linking.patch
+      then: 0001-fix-png-library-detection-on-macos.patch
+    - 0002-remove-same-compiler-test.patch
+    - 0003-remove-explicit-expat-linking.patch
+    - 0004-fix-xaw-list-pointer-types.patch
 
 build:
   number: 14
@@ -48,7 +49,8 @@ tests:
   - script:
       - test -f $PREFIX/bin/ncview
       - test -x $PREFIX/bin/ncview
-      - "ncview -c 2>&1 |egrep \"Error: Can't open display:\""
+      - "ncview -h > ncview.log 2>&1 || test $? -eq 1"
+      - "grep -F \"Ncview \" ncview.log"
 
 about:
   license: GPL-3.0-only
