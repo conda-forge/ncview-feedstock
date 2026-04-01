@@ -8,7 +8,9 @@ package:
   version: ${{ version }}
 
 source:
-  url: ftp://cirrus.ucsd.edu/pub/ncview/ncview-${{ version }}.tar.gz
+  # url: ftp://cirrus.ucsd.edu/pub/ncview/ncview-${{ version }}.tar.gz
+  # UCSD ftp server is down, so we use MIT mirror instead
+  url: https://mirrors.mit.edu/macports/distfiles/ncview/ncview-${{ version }}.tar.gz
   sha256: e8badc507b9b774801288d1c2d59eb79ab31b004df4858d0674ed0d87dfc91be
   patches:
     - if: osx
