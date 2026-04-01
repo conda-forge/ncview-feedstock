@@ -34,7 +34,11 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
 
     PNG_INCDIR=${PREFIX}/include
     PNG_LIBDIR=${PREFIX}/lib
-    PNG_LIBNAME=libpng.dylib
+    if [[ $(uname -s) == Darwin ]]; then
+        PNG_LIBNAME=libpng.dylib
+    else
+        PNG_LIBNAME=libpng.so
+    fi
     as_ac_File=`printf "%s\n" "ac_cv_file_$PNG_LIBDIR/$PNG_LIBNAME" | $as_tr_sh`
     eval "export $as_ac_File=yes"
 fi
