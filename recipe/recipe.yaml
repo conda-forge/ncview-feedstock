@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "2.1.8"
+  version: "2.1.11"
 
 package:
   name: ncview
@@ -11,7 +11,7 @@ source:
   # url: ftp://cirrus.ucsd.edu/pub/ncview/ncview-${{ version }}.tar.gz
   # UCSD ftp server is down, so we use MIT mirror instead
   url: https://mirrors.mit.edu/macports/distfiles/ncview/ncview-${{ version }}.tar.gz
-  sha256: e8badc507b9b774801288d1c2d59eb79ab31b004df4858d0674ed0d87dfc91be
+  sha256: 597cfddf9c2d7993e9b0b86bca1b73839567ee9116ee33f6d750a449b5033d91
   patches:
     - if: osx
       then: 0000-change_pnglib_suffix.patch
